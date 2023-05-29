@@ -14,7 +14,7 @@
   -webkit-text-size-adjust: 100%;
 } */
 
-a {
+/* a {
   text-decoration: none;
 }
 
@@ -30,6 +30,10 @@ ul {
 li {
   list-style: none;
 }
+
+h1 {
+  margin: 0;
+} */
 
 /* @media (prefers-color-scheme: light) {
   :root {

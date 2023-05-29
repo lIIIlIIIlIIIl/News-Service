@@ -1,0 +1,34 @@
+.login-wrapper {
+  margin: 0 auto;
+  width: 300px;
+}
+
+.login-wrapper h1 {
+  text-align: center;
+}
+
+.login-wrapper form {
+  height: 300px;
+  margin-top: 32px;
+  font-size: 20px;
+}
+
+.login-wrapper form label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.login-wrapper form input {
+  width: 70%;
+}
+
+.login-wrapper-button {
+  width: 100%;
+  background-color: green;
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 9px 0;
+}
