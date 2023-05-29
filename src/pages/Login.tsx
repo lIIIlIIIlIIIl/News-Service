@@ -40,6 +40,8 @@ const Login = () => {
       return;
     }
     routeTo("/");
+
+    localStorage.setItem("userInfo", JSON.stringify({ id: userInfo.id }));
   };
   return (
     <div className="login-wrapper">
