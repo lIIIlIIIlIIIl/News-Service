@@ -6,9 +6,20 @@ interface NavbarProps {
   navbarContent: NavElement[];
 }
 
+const getUserInfoFuc = () => {
+  const user = localStorage.getItem("userInfo");
+  if (user) {
+    return JSON.parse(user).id;
+  }
+  return "fail";
+};
+
 const Navbar: React.FC<NavbarProps> = ({ navbarContent }) => {
   const { currentPath, routeTo } = useRouter();
-  console.log(navbarContent);
+
+  const user = getUserInfoFuc();
+
+  console.log(user);
 
   const navbarMenuClickHandler = (path: string) => {
     routeTo(path);

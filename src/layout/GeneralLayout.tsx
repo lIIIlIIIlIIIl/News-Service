@@ -7,9 +7,9 @@ interface GeneralLayoutProps {
 
 const GeneralLayout: React.FC<GeneralLayoutProps> = ({ children }) => {
   return (
-    <div>
+    <div className="general-layout">
       <Navbar navbarContent={NavbarContent} />
-      <div>{children}</div>
+      <div className="general-layout-body">{children}</div>
     </div>
   );
 };

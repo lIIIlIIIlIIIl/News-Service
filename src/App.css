@@ -1,0 +1,30 @@
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  margin: 0;
+}
+
+.general-layout {
+  height: 100vh;
+}
+
+.general-layout-body {
+  margin: 0 auto;
+  width: 760px;
+  padding: 50px 20px;
+}
