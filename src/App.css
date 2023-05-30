@@ -25,6 +25,37 @@ h1 {
 
 .general-layout-body {
   margin: 0 auto;
-  width: 760px;
-  padding: 50px 20px;
+  width: 930px;
+  padding: 50px 0;
+}
+
+.headline-search {
+  margin-bottom: 30px;
+}
+.headline-search h1 {
+  margin-bottom: 15px;
+}
+
+.headline-search form button {
+  width: 150px;
+  border: none;
+  background-color: greenyellow;
+  border-radius: 3px;
+  padding: 3px 0;
+  font-weight: bold;
+}
+.headline-search form button:hover {
+  background-color: green;
+  color: #fff;
+}
+
+.headline {
+  overflow: hidden;
+}
+.headline-item {
+  float: left;
+  margin: 10px;
+  width: calc(33% - 20px);
+  height: 450px;
+  background: #fff;
 }
