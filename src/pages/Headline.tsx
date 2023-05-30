@@ -1,17 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { BASIC_URL, requestOptions } from "../api/const";
+import { HEADLINE_URL, fetchData } from "../api/const";
 import { countryOptions, topicOptions } from "../assets/OptionData";
 import SelectBox from "../components/SelectBox";
 import HeadlineCard from "../components/Card/HeadlineCard";
 import { HeadlineData, UserSelectData } from "../types/Headline";
-
-const fetchData = (URL: string) => {
-  const response = fetch(URL, requestOptions).then((res) => res.json());
-  return response;
-};
-
-const HEADLINE_URL = `${BASIC_URL}?when=14d&page_size=30`;
 
 const Headline = () => {
   const [headlineData, setHeadlineData] = useState<HeadlineData[]>([]);
