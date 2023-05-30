@@ -26,12 +26,21 @@ export const topicOptions = [
   { value: "gaming", title: "게임" },
   { value: "energy", title: "에너지" },
 ];
-// titletitle
-//author
-//published_date
-//rights 저작권
-//media
-//
+
+export const searchinOptions = [
+  { value: "none", title: "=== 선택 ===" },
+  { value: "summary", title: "제목" },
+  { value: "title", title: "기사 본문" },
+  { value: "title_summary", title: "제목 + 기사 본문" },
+];
+
+export const sortOptions = [
+  { value: "none", title: "=== 선택 ===" },
+  { value: "relevancy", title: "관련성" },
+  { value: "date", title: "날짜" },
+  { value: "rank", title: "순위" },
+];
+
 export const dummyData = [
   {
     status: "ok",

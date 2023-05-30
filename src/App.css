@@ -59,3 +59,12 @@ h1 {
   height: 450px;
   background: #fff;
 }
+
+.news {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.news-item {
+}
