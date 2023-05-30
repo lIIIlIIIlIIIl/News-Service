@@ -39,14 +39,16 @@ h1 {
 .headline-search form button {
   width: 150px;
   border: none;
-  background-color: greenyellow;
+  background-color: lightseagreen;
   border-radius: 3px;
-  padding: 3px 0;
+  padding: 5px 0;
+  font-size: 1rem;
   font-weight: bold;
+  color: #fff;
 }
+
 .headline-search form button:hover {
   background-color: green;
-  color: #fff;
 }
 
 .headline {
@@ -64,7 +66,21 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 10px 0;
 }
 
-.news-item {
+.news-pagenation {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.news-input {
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+.news-input input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 5px 15px;
 }
