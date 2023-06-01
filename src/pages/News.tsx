@@ -7,125 +7,80 @@ import {
   topicOptions,
 } from "../assets/OptionData";
 import SelectBox from "../components/SelectBox";
-import { NewsData } from "../types/News";
-import { NEWS_URL, fetchData } from "../api/const";
-import { UserSelectData } from "../types/Headline";
+import { NewsData, UserSearchParams } from "../types/News";
 import NewsCard from "../components/Card/NewsCard";
 import Pagination from "../components/Pagination";
+import { NewsHandler } from "../api/NewsApi";
 
 const News = () => {
   const [newsData, setNewsData] = useState<NewsData[]>([]);
-  const [searchUrl, setSearchUrl] = useState<string>(NEWS_URL);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [page, setPage] = useState<number>(1);
   const [isSearch, setIsSearch] = useState<boolean>(false);
 
+  const newsHandler = new NewsHandler();
+
   useEffect(() => {
     if (newsData.length === 0 || totalPage < 1) setIsSearch(false);
     if (newsData.length !== 0 || totalPage > 1) setIsSearch(true);
-  }, []);
+  }, [newsData]);
 
   const newsSearchHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setPage(1);
 
     const formData = new FormData(event.currentTarget);
-    const userSearchData: UserSelectData = {
-      q: (formData.get("keyword") as string) || "none",
-      search_in: (formData.get("search") as string) || "none",
-      countries: (formData.get("country") as string) || "none",
-      topic: (formData.get("topic") as string) || "none",
-      sort_by: (formData.get("sort") as string) || "none",
+    const userSearchData: UserSearchParams = {
+      q:
+        formData.get("keyword") === "none"
+          ? undefined
+          : (formData.get("keyword") as string),
+      search_in:
+        formData.get("search") === "none"
+          ? undefined
+          : (formData.get("search") as string),
+      countries:
+        formData.get("country") === "none"
+          ? undefined
+          : (formData.get("country") as string),
+      topic:
+        formData.get("topic") === "none"
+          ? undefined
+          : (formData.get("topic") as string),
+      sort_by:
+        formData.get("sort") === "none"
+          ? undefined
+          : (formData.get("sort") as string),
     };
 
-    let mySearchUrl = searchUrl;
-    for (const key in userSearchData) {
-      if (userSearchData[key] !== "none") {
-        if (key === "q") {
-          mySearchUrl += `&${key}="${userSearchData[key]}"`;
-        } else {
-          mySearchUrl += `&${key}=${userSearchData[key]}`;
-        }
-      }
-    }
+    newsHandler.makeParam(userSearchData);
 
-    const response = await fetchData(mySearchUrl);
-
-    if (response.status === "ok") {
-      const total = response.total_pages;
-
-      const newData: NewsData[] = response.articles.reduce(
-        (prev: NewsData[], article: NewsData) => {
-          return [
-            ...prev,
-            {
-              title: article.title,
-              author: article.author,
-              summary: article.summary,
-              published_date: article.published_date,
-              rights: article.rights,
-              media: article.media,
-              rank: article.rank,
-              link: article.link,
-            },
-          ];
-        },
-        [] as NewsData[]
-      );
-
-      setNewsData(newData);
-      setTotalPage(total);
-      setSearchUrl(mySearchUrl);
-      setIsSearch(true);
-    }
+    await newsHandler.getData(page);
+    setNewsData(newsHandler.data);
+    setTotalPage(newsHandler.totalPage);
+    setIsSearch(true);
   };
 
-  const fetchDateUsePageNumber = async (searchPage: number) => {
-    const mySearchUrl = `${searchUrl}&page=${searchPage}`;
-    const response = await fetchData(mySearchUrl);
-
-    if (response.status === "ok") {
-      const newData: NewsData[] = response.articles.reduce(
-        (prev: NewsData[], article: NewsData) => {
-          return [
-            ...prev,
-            {
-              title: article.title,
-              author: article.author,
-              summary: article.summary,
-              published_date: article.published_date,
-              rights: article.rights,
-              media: article.media,
-              rank: article.rank,
-              link: article.link,
-            },
-          ];
-        },
-        [] as NewsData[]
-      );
-
-      setNewsData(newData);
-      setIsSearch(true);
-    }
-  };
-
-  const onNextPage = useCallback(() => {
+  const onNextPage = useCallback(async () => {
     if (page + 1 <= totalPage) {
       setPage((prev) => prev + 1);
-      fetchDateUsePageNumber(page + 1);
+      await newsHandler.getData(page + 1);
+      setNewsData(newsHandler.data);
     }
   }, [page, totalPage]);
 
-  const onBackPage = useCallback(() => {
+  const onBackPage = useCallback(async () => {
     if (page - 1 > 0) {
       setPage((prev) => prev - 1);
-      fetchDateUsePageNumber(page - 1);
+      await newsHandler.getData(page - 1);
+      setNewsData(newsHandler.data);
     }
   }, [page]);
 
-  const onPageNumberClickHandler = useCallback((page: number) => {
+  const onPageNumberClickHandler = useCallback(async (page: number) => {
     setPage(page);
-    fetchDateUsePageNumber(page);
+    await newsHandler.getData(page);
+    setNewsData(newsHandler.data);
   }, []);
 
   return (
