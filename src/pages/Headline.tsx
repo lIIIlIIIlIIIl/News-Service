@@ -1,6 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { countryOptions, topicOptions } from "../assets/OptionData";
+import {
+  countryOptions,
+  topicOptions,
+} from "../components/SelectBox/OptionData";
 import SelectBox from "../components/SelectBox";
 import HeadlineCard from "../components/Card/HeadlineCard";
 import { HeadlineData, UserSelectData } from "../types/Headline";

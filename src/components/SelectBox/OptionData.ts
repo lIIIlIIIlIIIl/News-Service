@@ -5,7 +5,7 @@ export const countryOptions = [
   { value: "CN", title: "중국" },
   { value: "ES", title: "스페인" },
   { value: "JP", title: "일본" },
-];
+] as const;
 
 export const topicOptions = [
   { value: "none", title: "=== 선택 ===" },
@@ -25,21 +25,21 @@ export const topicOptions = [
   { value: "science", title: "과학" },
   { value: "gaming", title: "게임" },
   { value: "energy", title: "에너지" },
-];
+] as const;
 
 export const searchinOptions = [
   { value: "none", title: "=== 선택 ===" },
   { value: "summary", title: "제목" },
   { value: "title", title: "기사 본문" },
   { value: "title_summary", title: "제목 + 기사 본문" },
-];
+] as const;
 
 export const sortOptions = [
   { value: "none", title: "=== 선택 ===" },
   { value: "relevancy", title: "관련성" },
   { value: "date", title: "날짜" },
   { value: "rank", title: "순위" },
-];
+] as const;
 
 export const dummyData = [
   {
@@ -262,3 +262,36 @@ export const dummyData = [
     ],
   },
 ];
+
+export const enum CountryOptions {
+  KR = "한국",
+  US = "미국",
+  CN = "중국",
+  ES = "스페인",
+  JP = "일본",
+}
+
+export const enum TopicOptions {
+  news = "뉴스",
+  sport = "스포츠",
+  tech = "기술",
+  world = "세계",
+  finance = "금융",
+  politics = "정치",
+  business = "사업",
+  economics = "경제",
+  entertainment = "연예",
+  beauty = "미용",
+  travel = "여행",
+  music = "음악",
+  food = "음식",
+  science = "과학",
+  gaming = "게임",
+  energy = "에너지",
+}
+
+export const enum SearchinOptions {
+  relevancy = "관련성",
+  date = "날짜",
+  rank = "순위",
+}

@@ -5,7 +5,7 @@ import {
   searchinOptions,
   sortOptions,
   topicOptions,
-} from "../assets/OptionData";
+} from "../components/SelectBox/OptionData";
 import SelectBox from "../components/SelectBox";
 import { NewsData, UserSearchParams } from "../types/News";
 import NewsCard from "../components/Card/NewsCard";
