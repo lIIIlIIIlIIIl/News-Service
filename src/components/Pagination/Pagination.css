@@ -1,0 +1,17 @@
+.pagination-container {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.pagination-container button {
+  background-color: #fff;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.button-selected {
+  font-weight: bold;
+  color: red;
+}
