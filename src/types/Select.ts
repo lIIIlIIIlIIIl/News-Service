@@ -5,5 +5,5 @@ export interface Options {
 
 export interface SelectBoxProps {
   name: string;
-  options: Options[];
+  options: readonly Options[];
 }

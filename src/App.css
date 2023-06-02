@@ -1,23 +1,4 @@
-a {
-  text-decoration: none;
-}
-
-body {
-  margin: 0;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
-h1 {
-  margin: 0;
-}
+@import "./style/reset.css";
 
 .general-layout {
   height: 100vh;
